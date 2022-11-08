@@ -25,9 +25,10 @@ const lower = "abcdefghijklmnopqrstuvwxyz";
 const number = "0123456789";
 const symbol = "!@#$%^&*-{}[]?/";
 
-//if (userPasswordLength < 8 || userPasswordLength > 128) {
-  //userPasswordLength = window.prompt("Please enter a number between 8 and 128");
-//}
+if (userPasswordLength < 8 || userPasswordLength > 128) {
+  alert("Please pick a number from 8 to 128");
+  generatePassword();
+}
 
 /*
 let options = {
@@ -42,6 +43,11 @@ let userUpper = confirm("Would you like your password to contain any uppercase l
 let userLower = confirm("Would you like your password to contain any lowercase letter?");
 let userNmuber = confirm("Would you like your password to contain any numbers?");
 let userSymbol = confirm("Would you like your password to contain any sympols?");
+
+if (!userUpper && !userLower && !userNmuber && !userSymbol) {
+  alert("Atleast one criteria must be selected");
+  generatePassword();
+}
 
 //Generate random password
 let options = "";
