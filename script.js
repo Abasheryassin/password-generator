@@ -18,32 +18,52 @@ function generatePassword() {
 // Get user imput for length, uppercase, lowercase, number, and symbol
 let userPassword = "";
 let userPasswordLength = window.prompt("Please enter the character length you wish your password to be. (Must be between 8-128 characters");
-userPasswordLength = parseInt(userPasswordLength);
+//userPasswordLength = parseInt(userPasswordLength);
 
 const upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 const lower = "abcdefghijklmnopqrstuvwxyz";
 const number = "0123456789";
 const symbol = "!@#$%^&*-{}[]?/";
 
-if (userPasswordLength < 8 || userPasswordLength > 128) {
-  userPasswordLength = window.prompt("Please enter a number between 8 and 128");
-}
+//if (userPasswordLength < 8 || userPasswordLength > 128) {
+  //userPasswordLength = window.prompt("Please enter a number between 8 and 128");
+//}
 
-let userUpper = window.confirm("Would you like your password to contain any uppercase letters?");
-let userLower = window.confirm("Would you like your password to contain any lowercase letter?");
-let userNmuber = window.confirm("Would you like your password to contain any numbers?");
-let userSymbol = window.confirm("Would you like your password to contain any sympols?");
+/*
+let options = {
+  userUpper: true,
+  userLower: true,
+  userNmuber: true,
+  userSymbol: true
+};
+*/
+
+let userUpper = confirm("Would you like your password to contain any uppercase letters?");
+let userLower = confirm("Would you like your password to contain any lowercase letter?");
+let userNmuber = confirm("Would you like your password to contain any numbers?");
+let userSymbol = confirm("Would you like your password to contain any sympols?");
 
 //Generate random password
 let options = "";
+let gPassword = "";
 
-if (userUpper){
-  
+if (userUpper) {
+  options = options.concat(upper);
+}
+if (userLower) {
+  options = options.concat(lower);
+}
+if (userNmuber) {
+  options = options.concat(number);
+}
+if (userSymbol) {
+  options = options.concat(symbol);
 }
 
-
-
-
+for (i = 0; i < userPasswordLength; i++) {
+  gPassword = gPassword.concat(options[Math.floor(Math.random() * options.length)]);
+}
+userPassword = gPassword;
 return userPassword;
 }
 
